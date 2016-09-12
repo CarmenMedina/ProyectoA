@@ -18,12 +18,10 @@ class EditController extends Controller
      * @param Pedido $idPedido
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function editOrder(Pedido $idPedido)
+    public function editOrder($idPedido)
     {
-        $idPedido=1;
         $pedidos = Pedido::find($idPedido);
-        dd($pedidos);
-       // return view('order/edit-order', compact('pedidos'));
+        return view('order/edit-order', compact('pedidos'));
     }
 
     public function updateOrder(Request $request, $pedidos)

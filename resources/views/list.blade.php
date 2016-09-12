@@ -47,7 +47,7 @@
                                     <div>{{$pedido->guia->urlEtiqueta}}</div>
                                 </td>
                                 <td class="table-text">
-                                    <a href="{{url('order/edit-order', $pedido)}}"> Update </a>
+                                    <a href="{{url('order/edit-order', $pedido->idPedido)}}"> Update </a>
                                 </td>
                             </tr>
                             @endforeach
