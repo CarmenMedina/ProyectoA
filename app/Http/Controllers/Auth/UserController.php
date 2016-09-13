@@ -28,13 +28,18 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth)
     {
+        $this->auth = $auth;
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     public function getLogin()
     {
+        if (view()->exists('auth.authenticate')) {
+            return view('auth.authenticate');
+        }
+
         return view('auth.login');
     }
 
@@ -50,7 +55,7 @@ class UserController extends Controller
 
         if ($this->auth->attempt($credentials, $request->has('remember')))
         {
-            return redirect('cliente');
+            return redirect('home');
         }
 
         return redirect('login');

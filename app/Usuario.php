@@ -25,6 +25,6 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 
     public function roles()
     {
-        return $this->belongsToMany(Roles::class, 'usuariosroles','idUsuario','idRol');
+        return $this->belongsToMany('App\Roles', 'usuariosroles','idUsuario','idRol');
     }
 }

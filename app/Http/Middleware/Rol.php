@@ -8,9 +8,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Requests\Request;
 use App\Usuario;
+use App\Roles;
 use Closure;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Guard;
 
 class Rol
 {
@@ -19,16 +21,8 @@ class Rol
         'otro'   =>0
     ];
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
 
-
-    public function handle($request, Closure $next, $roles)
+    public function handle(Request $request, Closure $next)
     {
         $usuario = Auth::user()->idUsuario;
         $count = Usuario::where('idUsuario', $usuario)->

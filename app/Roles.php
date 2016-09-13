@@ -12,14 +12,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Roles extends Model
 {
-    protected $table = 'Roles';
+    protected $table = 'roles';
     protected $primaryKey = 'idRol';
 
     protected $fillable = ['idRol', 'descripcion'];
 
     public function usuario()
     {
-        return $this->belongsToMany(Usuario::class, 'usuariosroles','idRol','idUsuario');
+        return $this->belongsToMany('App\Usuario', 'usuariosroles','idRol','idUsuario');
     }
 
 }

@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as'   => 'home'
-]);
-
 Route::get('login', [
     'uses' => 'Auth\UserController@getLogin',
     'as'   => 'login'
@@ -27,3 +22,11 @@ Route::get('logout', [
     'uses' => 'Auth\AuthController@getLogout',
     'as'   => 'logout'
 ]);
+
+Route::group(['middleware' => 'Rol:admin'], function (){
+
+    Route::get('/', [
+        'uses' => 'HomeController@index',
+        'as'   => 'home'
+    ]);
+});
