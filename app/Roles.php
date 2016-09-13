@@ -12,23 +12,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Roles extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'Roles';
     protected $primaryKey = 'idRol';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['idRol', 'descripcion'];
 
-    public function usuariosroles()
+    public function usuario()
     {
-        return $this->belongsToMany(UsuarioRoles::class, 'idRol');
+        return $this->belongsToMany(Usuario::class, 'usuariosroles','idRol','idUsuario');
     }
+
 }
