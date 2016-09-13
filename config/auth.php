@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => App\User::class,
+    'model' => array(App\User::class, App\Roles::class, App\UsuarioRoles::class),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'table' => 'users',
+    'table' => array('usuario', 'usuariosroles', 'roles'),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,10 +58,10 @@ return [
     |
     */
 
-    'password' => [
+    'password' => array(
         'email'  => 'emails.password',
         'table'  => 'password_resets',
         'expire' => 60,
-    ],
+    ),
 
-];
+);
