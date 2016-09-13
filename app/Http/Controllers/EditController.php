@@ -24,10 +24,18 @@ class EditController extends Controller
         return view('order/edit-order', compact('pedidos'));
     }
 
-    public function updateOrder(Request $request, $pedidos)
+    public function updateOrder(Request $request, $idPedido)
     {
-        $pedidos->fill($request->only(['idFactura', 'estado', 'numeroGuia', 'urlRastreo', 'urlEtiqueta']));
+        $pedidos = Pedido::find($idPedido);
+
+        $pedidos->idFactura = $request -> idFactura;;
+        $pedidos->estado = $request-> estado;
+        $pedidos->guia->numeroGuia = $request-> numeroGuia;
+        $pedidos->guia->urlRastreo = $request-> urlRastreo;
+        $pedidos->guia->urlEtiqueta = $request-> urlEtiqueta;
+
         $pedidos->save();
+        $pedidos->guia->save();
 
         $this->validate($request, [
             'idFactura' => 'required|max:255',
@@ -37,7 +45,6 @@ class EditController extends Controller
             'urlEtiqueta' => 'required|max:255',
         ]);
 
-        return redirect('list')
-            ->with('alert', 'Your profile has been updated');
+        return redirect('list');
     }
 }
