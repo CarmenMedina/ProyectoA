@@ -28,7 +28,8 @@ return [
     |
     */
 
-    'model' => App\User::class,
+    'model' => array(App\Pedido::class, App\Direccion::class, App\Usuario::class, App\Pago::class, App\Guia::class,
+        App\Servicio::class),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ return [
     |
     */
 
-    'table' => 'users',
+    'table' => array('pedido', 'direccion', 'usuario', 'pago', 'guia', 'servicio'),
 
     /*
     |--------------------------------------------------------------------------
