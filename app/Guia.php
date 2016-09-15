@@ -8,5 +8,10 @@ class Guia extends Model
     protected $table = 'Guia';
     protected $primaryKey = 'idGuia';
 
-    protected $fillable = [];
+    protected $fillable = ['idGuia','idServicio','numeroGuia','urlRastreo','urlEtiqueta'];
+
+    public function pedido()
+    {
+        return $this->belongsTo(Pedido::class, 'idGuia');
+    }
 }

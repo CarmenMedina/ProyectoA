@@ -8,5 +8,10 @@ class Pago extends Model
     protected $table = 'Pago';
     protected $primaryKey = 'idPago';
 
-    protected $fillable = [];
+    protected $fillable = ['idPago','idCupon','numeroReferencia','fecha','monto','estado'];
+
+    public function pedido()
+    {
+        return $this->belongsTo(Pedido::class, 'idPago');
+    }
 }
