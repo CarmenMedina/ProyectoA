@@ -23,7 +23,7 @@ Route::get('logout', [
     'as'   => 'logout'
 ]);
 
-Route::group(['middleware' => 'Rol:admin'], function (){
+Route::group(['Middleware' => 'Rol:admin'], function (){
 
     Route::get('/', [
         'uses' => 'HomeController@index',

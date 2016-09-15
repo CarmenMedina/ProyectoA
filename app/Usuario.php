@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Carmen Botello
- * Date: 13/09/2016
- * Time: 02:09 PM
- */
-
+namespace App;
 
 use App\Roles;
 use Illuminate\Database\Eloquent\Model;

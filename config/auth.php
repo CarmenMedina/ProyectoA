@@ -28,7 +28,7 @@ return array(
     |
     */
 
-    'model' => array(App\Usuario::class, App\Roles::class,),
+    'model' => array(App\Usuario::class, App\Roles::class),
 
     /*
     |--------------------------------------------------------------------------
