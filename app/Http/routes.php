@@ -12,11 +12,11 @@
 */
 
 Route::get('login', [
-    'uses' => 'Auth\UserController@getLogin',
+    'uses' => 'UserController@getLogin',
     'as'   => 'login'
 ]);
 
-Route::post('login', 'Auth\UserController@postLogin');
+Route::post('login', 'UserController@postLogin');
 
 Route::get('logout', [
     'uses' => 'Auth\AuthController@getLogout',
