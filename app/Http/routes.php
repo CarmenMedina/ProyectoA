@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as'   => 'home'
+]);
+
+Route::get('list', [
+    'uses' => 'ListController@getList',
+    'as' => 'list'
+]);
+Route::post('list', [
+    'uses' => 'ListController@posList',
+    'as' => 'list'
+]);
+
+Route::get('order/edit-order/{idPedido}', 'EditController@editOrder');
+Route::put('order/edit-order/{idPedido}', 'EditController@updateOrder');
