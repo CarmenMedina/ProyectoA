@@ -19,7 +19,7 @@ class Roles extends Model
 
     public function usuario()
     {
-        return $this->belongsToMany('App\Usuario', 'usuariosroles','idRol','idUsuario');
+        return $this->belongsToMany('App\Usuarios', 'usuariosroles','idRol','idUsuario');
     }
 
 }

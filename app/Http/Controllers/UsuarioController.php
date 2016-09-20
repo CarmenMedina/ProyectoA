@@ -1,18 +1,19 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Validator;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
+use Auth;
 
-class UserController extends Controller
+
+
+class UsuarioController extends Controller
 {
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-
 
     public function getLogin()
     {
@@ -24,16 +25,13 @@ class UserController extends Controller
     }
 
     /**
-     * Create a new authentication controller instance.
-     *
+     * UsuarioController constructor.
      * @param Guard $auth
      */
 
     public function __construct(Guard $auth)
     {
-        $this->auth = $auth;
         $this->middleware('guest', ['except' => 'getLogout']);
-
     }
 
     public function postLogin(Request $request)
@@ -43,22 +41,16 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-
-
         $credentials = $request->only('email' , 'password');
+        //dd($request->email);
 
-        if ($this->auth->attempt($credentials, $request->has('remember')))
+        if ($this->authorizeattempt($credentials, $request->has('remember')))
         {
             //return redirect('home');
             dd('prueba');
         }
         dd('prueba2');
-       /* return redirect('login');*/
+        /* return redirect('login');*/
 
     }
-
-
-
-
-
 }

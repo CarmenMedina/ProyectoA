@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Usuario;
+use App\Usuarios;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class Rol
     public function handle($request, Closure $next)
     {
         $usuario = Auth::user()->idUsuario;
-        $count = Usuario::where('idUsuario', $usuario)->
+        $count = Usuarios::where('idUsuario', $usuario)->
         wherehas('roles', function ($query){
             $query->where('descripcion', 'admin');
         })->get();

@@ -10,23 +10,27 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as'   => 'home'
+]);
 
 Route::get('login', [
-    'uses' => 'UserController@getLogin',
+    'uses' => 'UsuarioController@getLogin',
     'as'   => 'login'
 ]);
 
-Route::post('login', 'UserController@postLogin');
+Route::post('login', 'UsuarioController@postLogin');
 
 Route::get('logout', [
     'uses' => 'Auth\AuthController@getLogout',
     'as'   => 'logout'
 ]);
 
-Route::group(['Middleware' => 'Rol:admin'], function (){
+/*Route::group(['Middleware' => 'Rol:admin'], function (){
 
     Route::get('/', [
         'uses' => 'HomeController@index',
         'as'   => 'home'
     ]);
-});
+});*/
