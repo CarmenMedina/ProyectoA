@@ -27,3 +27,4 @@ Route::post('list', [
 
 Route::get('order/edit-order/{idPedido}', 'EditController@editOrder');
 Route::put('order/edit-order/{idPedido}', 'EditController@updateOrder');
+
