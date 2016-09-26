@@ -5,9 +5,6 @@ Route::get('/', [
     'as'   => 'home'
 ]);
 
-Route::get('order/new-order', [
-    'uses' => 'NewOrderController@getOrder',
-    'as'   => 'order/new-order'
-]);
+Route::get('order/newOrder','NewOrderController@getOrder');
 
-Route::post('order/new-order', 'NewOrderController@postOrder');
+Route::post('order/newOrder', 'NewOrderController@postOrder');

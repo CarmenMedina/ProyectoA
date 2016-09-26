@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         @include('partials/errors')
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{route('order/new-order')}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{route('order/newOrder')}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">

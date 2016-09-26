@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Carmen Botello
- * Date: 15/09/2016
- * Time: 02:22 PM
- */
-
 namespace App\Http\Controllers;
-
 
 use App\Direccion;
 use App\Guia;
@@ -34,24 +26,24 @@ class NewOrderController extends Controller
     public function postOrder(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'idLlegada' => 'required',
-            'idSalida' => 'required',
-            'idUsuario' => 'required',
-            'idPago' => 'required',
-            'idGuia' => 'required',
-            'idServicio' => 'required',
-            'idTransaccion' => 'required',
-            'idFactura' => 'required',
-            'peso' => 'required',
-            'pesoVolumetrico' => 'required',
-            'largo' => 'required',
-            'ancho' => 'required',
-            'alto' => 'required',
+            'idLlegada' => 'required|integer',
+            'idSalida' => 'required|integer',
+            'idUsuario' => 'required|integer',
+            'idPago' => 'required|integer',
+            'idGuia' => 'required|integer',
+            'idServicio' => 'required|integer',
+            'idTransaccion' => 'required|string|max:255',
+            'idFactura' => 'required|string|max:255',
+            'peso' => 'required|numeric',
+            'pesoVolumetrico' => 'required|numeric',
+            'largo' => 'required|numeric',
+            'ancho' => 'required|numeric',
+            'alto' => 'required|numeric',
             'fecha' => 'required',
-            'descripcion' => 'required',
-            'estado' => 'required',
-            'cantidad' => 'required',
-            'monto' => 'required',
+            'descripcion' => 'required|string|max:30',
+            'estado' => 'required|string|max:50',
+            'cantidad' => 'required|integer',
+            'monto' => 'required|integer',
 
         ]);
 
@@ -61,26 +53,7 @@ class NewOrderController extends Controller
                 ->withErrors($validator);
         }
 
-        $pedidos = new Pedido;
-        $pedidos->idLlegada = $request->idLlegada;
-        $pedidos->idSalida = $request->idSalida;
-        $pedidos->idUsuario = $request->idUsuario;
-        $pedidos->idPago = $request->idPago;
-        $pedidos->idGuia = $request->idGuia;
-        $pedidos->idServicio = $request->idServicio;
-        $pedidos->idTransaccion = $request->idTransaccion;
-        $pedidos->idFactura = $request->idFactura;
-        $pedidos->peso = $request->peso;
-        $pedidos->pesoVolumetrico = $request->pesoVolumetrico;
-        $pedidos->largo = $request->largo;
-        $pedidos->ancho = $request->ancho;
-        $pedidos->alto = $request->alto;
-        $pedidos->fecha = $request->fecha;
-        $pedidos->descripcion = $request->descripcion;
-        $pedidos->estado = $request->estado;
-        $pedidos->cantidad = $request->cantidad;
-        $pedidos->monto = $request->monto;
-
+        $pedidos = new Pedido($request->all());
         $pedidos->save();
 
         return redirect('order/new-order');
